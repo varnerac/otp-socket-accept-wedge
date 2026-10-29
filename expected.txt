@@ -1,0 +1,16 @@
+# Last line of wedge:check/0 for each OTP release or build.sh variant.
+25.3.2.2   dup=ok single=queued stranded=missed
+25.3.2.3   dup=wedged single=queued stranded=missed
+26.0.1     dup=ok single=queued stranded=missed
+26.0.2     dup=wedged single=queued stranded=missed
+26.2.5.21  dup=wedged single=queued stranded=missed
+27.3.4.1   dup=wedged single=queued stranded=missed
+27.3.4.2   dup=wedged single=queued stranded=missed
+28.0.1     dup=wedged single=queued stranded=missed
+28.0.2     dup=wedged single=queued stranded=missed
+29.0.2     dup=wedged single=queued stranded=missed
+29.1.2     dup=wedged single=queued stranded=missed
+base       dup=wedged single=queued stranded=missed
+pr         dup=wedged single=wedged stranded=missed
+fix        dup=ok single=queued stranded=ok
+pr-fix     dup=ok single=direct stranded=ok

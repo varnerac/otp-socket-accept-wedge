@@ -1,0 +1,37 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    name: OTP ${{ matrix.otp }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        otp: ["25.3.2.2", "25.3.2.3", "26.0.1", "26.0.2", "26.2.5.21",
+              "27.3.4.1", "27.3.4.2", "28.0.1", "28.0.2", "29.0.2", "29.1.2"]
+    steps:
+      - uses: actions/checkout@v5
+      - run: ./check.sh ${{ matrix.otp }}
+
+  build:
+    name: ${{ matrix.variant }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        variant: [base, pr, fix, pr-fix]
+    steps:
+      - uses: actions/checkout@v5
+      - name: build OTP
+        run: ./build.sh ${{ matrix.variant }} >build.log 2>&1 || { tail -n 50 build.log; exit 1; }
+      - run: ./check.sh ${{ matrix.variant }} otp-${{ matrix.variant }}

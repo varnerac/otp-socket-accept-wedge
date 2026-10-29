@@ -1,0 +1,4 @@
+*.beam
+/otp-*/
+build.log
+erl_crash.dump
