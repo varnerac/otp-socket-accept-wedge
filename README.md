@@ -11,6 +11,9 @@ The error is `{error, {invalid, select_sent}}` since OTP-19684 (27.3.4.2,
 27.3.4.1 and 28.0.1, `accept` raises a `case_clause` instead; an uncaught
 raise kills the caller, which does wake the next acceptor.
 
+The fix is [erlang/otp#12118](https://github.com/erlang/otp/pull/12118): the
+same change as [fix.patch](fix.patch), plus a `socket_SUITE` test.
+
 CI runs the repro on OTP releases and on four source builds:
 
 - `base`: master at the parent of
@@ -82,4 +85,4 @@ source build:
 
 ## License
 
-Apache-2.0, like OTP.
+Apache-2.0.

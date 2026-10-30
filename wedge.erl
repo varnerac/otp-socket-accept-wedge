@@ -1,7 +1,7 @@
 -module(wedge).
 -export([run/0, single/0, stranded/0, check/0]).
 
-%% The repro from the issue: another descriptor takes L's connection.
+%% dup: another descriptor takes L's connection.
 run() ->
     {L, Port} = listen(),
     %% D: a dup of L's fd, standing in for whatever else takes L's connection.
